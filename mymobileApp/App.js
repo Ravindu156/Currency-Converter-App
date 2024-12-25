@@ -1,12 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { StyleSheet, Text, View ,TextInput,Button} from 'react-native';
-import { Provider as PaperProvider,Appbar } from 'react-native-paper';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { Provider as PaperProvider, Appbar, IconButton } from 'react-native-paper';
 
 export default function App() {
   const [lkrAmount,setLkrAmount]=useState('');
   const [usdAmount,setUsdAmount]=useState('');
-  const [loadimng,setLoading]=useState(false);
+  const [loading,setLoading]=useState(false);
   const [error,setError]=useState('');
 
   //Fixed exchange rate: Rs.300
@@ -53,17 +53,21 @@ export default function App() {
          onChangeText={setLkrAmount}
           keyboardType='numeric'
           style={styles.input}
+           placeholder="Enter amount"
+          placeholderTextColor="#aaa"
          />
 
-        <Button
-          mode="contained"
-          onPress={convertCurrency}
-          loading={loading}
-          style={styles.button}
-        
-        
-        >Convert to USD</Button>
-
+    < TouchableOpacity
+            style={styles.button}
+            onPress={convertCurrency}
+            disabled={loading}
+          >
+            {loading ? (
+              <ActivityIndicator size="small" color="#fff" />
+            ) : (
+              <Text style={styles.buttonText}>Convert to USD</Text>
+            )}
+          </TouchableOpacity>
 
         {error ? (
           <Text style={styles.error}>{error}</Text>
@@ -80,26 +84,57 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#f4f4f4',
+    paddingTop: 40,
+  },
+  appbar: {
+    backgroundColor: '#6200ee',
+  },
+  content: {
+    marginHorizontal: 20,
+    marginTop: 30,
+    alignItems: 'center',
+  },
+  title: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 20,
+  },
+  input: {
+    width: '100%',
+    padding: 10,
+    marginBottom: 20,
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    fontSize: 16,
+    borderColor: '#ddd',
+    borderWidth: 1,
+  },
+  button: {
+    backgroundColor: '#6200ee',
+    paddingVertical: 15,
+    paddingHorizontal: 30,
+    borderRadius: 10,
+    width: '100%',
+    alignItems: 'center',
     justifyContent: 'center',
-    padding:20,
   },
-  content:{
-    marginTop:20,
-
+  buttonText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: '600',
   },
-  input:{
-    marginBottom:20,
+  result: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#333',
+    marginTop: 20,
   },
-  button:{
-    marginBottom:20,
+  error: {
+    color: 'red',
+    fontSize: 16,
+    marginTop: 20,
   },
-  result:{
-    fontSize:18,
-    fontweight:'bold',
-  },
-  error:{
-    color:'red',
-    fontSize:16
-  }
 
 });
