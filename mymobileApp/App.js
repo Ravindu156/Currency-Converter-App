@@ -40,18 +40,21 @@ export default function App() {
   
   
   return (
-    <View style={styles.container}>
-      <Text>Hikka</Text>
-      <StatusBar style="auto" />
+   <PaperProvider>
+   <View style={styles.container}>
+     <Appbar.Header>
+        <Appbar.Content title="Currency Converter"/>
+     </Appbar.Header>
+      
     </View>
+    </PaperProvider>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
+    padding:20,
   },
 });
