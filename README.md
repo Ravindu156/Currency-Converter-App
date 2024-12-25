@@ -25,3 +25,6 @@ Before you run the app, ensure you have the following installed:
 ```bash
 git clone https://github.com/Ravindu156/currency-converter-app.git
 cd currency-converter-app
+
+![image](https://github.com/user-attachments/assets/8753cca4-1d04-4ca9-87c6-04ce83a828b9)
+
