@@ -45,6 +45,32 @@ export default function App() {
      <Appbar.Header>
         <Appbar.Content title="Currency Converter"/>
      </Appbar.Header>
+
+     <View style={styles.content}>
+        <TextInput
+          label="Enter amount in LKR"
+          value={lkrAmount}
+         onChangeText={setLkrAmount}
+          keyboardType='numeric'
+          style={styles.input}
+         />
+
+        <Button
+          mode="contained"
+          onPress={convertCurrency}
+          loading={loading}
+          style={styles.button}
+        
+        
+        >Convert to USD</Button>
+
+
+        {error ? (
+          <Text style={styles.error}>{error}</Text>
+        ):(
+          <Text style={styles.result}>USD:{usdAmount}</Text>
+        )}
+     </View>
       
     </View>
     </PaperProvider>
