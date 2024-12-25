@@ -57,4 +57,23 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding:20,
   },
+  content:{
+    marginTop:20,
+
+  },
+  input:{
+    marginBottom:20,
+  },
+  button:{
+    marginBottom:20,
+  },
+  result:{
+    fontSize:18,
+    fontweight:'bold',
+  },
+  error:{
+    color:'red',
+    fontSize:16
+  }
+
 });
